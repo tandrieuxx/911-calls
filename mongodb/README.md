@@ -27,6 +27,11 @@ Afin de répondre aux différents problèmes, vous allez avoir besoin de créer 
 * Un index textuel sur le titre des appels pour pouvoir faire des recherches full-text sur ce champ (recherche des overdoses par exemple)
   * https://docs.mongodb.com/manual/core/index-text/#create-text-index
 
+```
+db.calls.createIndex({ coordinates : "2dsphere" })
+db.calls.createIndex({ title: "text" })
+```
+
 ## Requêtes
 
 À vous de jouer ! Écrivez les requêtes MongoDB permettant de résoudre les problèmes posés.

@@ -64,6 +64,22 @@ db.calls.aggregate({
 })
 ```
 
+### Trouver les 3 mois ayant comptabilisés le plus d'appels
+
+```
+db.calls.aggregate([
+    { $group: {
+        _id: { 
+            month: { $month: '$timestamp' },
+            year: { $year: '$timestamp' }
+        },
+        count: { $sum: 1 }
+    } },
+    { $sort: { count: -1 } },
+    { $limit: 3 }
+])
+```
+
 
 Vous allez sûrement avoir besoin de vous inspirer des points suivants de la documentation :
 

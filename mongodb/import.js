@@ -12,8 +12,10 @@ var insertCalls = function(db, callback) {
     fs.createReadStream('../911.csv')
         .pipe(csv())
         .on('data', data => {
+            var splitTitle = data.title.split(': ');
             var call = {
-              'title': data.title,
+              'category': splitTitle[0],
+              'title': splitTitle[1],
               'desc': data.desc,
               'timestamp': data.timeStamp,
               'coordinates': [parseFloat(data.lng), parseFloat(data.lat)],

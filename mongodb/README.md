@@ -36,8 +36,21 @@ db.calls.createIndex({ title: "text" })
 
 À vous de jouer ! Écrivez les requêtes MongoDB permettant de résoudre les problèmes posés.
 
+### Compter le nombre d'appels autour de Lansdale dans un rayon de 500 mètres
+
 ```
-TODO : ajouter les requêtes MongoDB ici
+db.calls.count({
+    coordinates : {
+        $near : {
+            $geometry : {
+                type : "Point",
+                coordinates : [ -75.283783 , 40.241493 ] },
+                $maxDistance : 500
+            } 
+        } 
+    }
+)
+
 ```
 
 Vous allez sûrement avoir besoin de vous inspirer des points suivants de la documentation :

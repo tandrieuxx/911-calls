@@ -17,7 +17,7 @@ var insertCalls = function(db, callback) {
               'category': splitTitle[0],
               'title': splitTitle[1],
               'desc': data.desc,
-              'timestamp': data.timeStamp,
+              'timestamp': new Date(data.timeStamp),
               'coordinates': [parseFloat(data.lng), parseFloat(data.lat)],
               'addr': data.addr,
               'zip': data.zip,
